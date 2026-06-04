@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { authRouter } from "../modules/auth/auth.route";
+import { userRouter } from "../modules/user/user.routes";
 
 const router = Router();
 
@@ -10,10 +11,11 @@ interface IRouter {
 
 const moduleRoutes: IRouter[] = [
   // For user
-  // {
-  //   path: "/user",
-  //   route: userRouter,
-  // },
+  {
+    path: "/user",
+    route: userRouter,
+  },
+  // For Authentication
   {
     path: "/auth",
     route: authRouter,

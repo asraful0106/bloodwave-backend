@@ -19,7 +19,7 @@ interface IEnvConfig {
   // // Express session
   // EXPRESS_SESSION_SECRET: string;
   // // Storage Provider
-  // PROVIDER: "S3" | "LOCAL" | "CLOUDINARY";
+  PROVIDER: "s3" | "local" | "cloudinary";
   // // SSL
   // SSL: {
   //   SSL_STORE_ID: string;
@@ -53,7 +53,7 @@ const loadEnvVariables = (): IEnvConfig => {
     // // Express session
     // "EXPRESS_SESSION_SECRET",
     // // Storage Provider
-    // "PROVIDER",
+    "PROVIDER",
     // "SSL_STORE_ID",
     // "SSL_STORE_PASS",
     // "SSL_PAYMENT_API",
@@ -87,7 +87,7 @@ const loadEnvVariables = (): IEnvConfig => {
     // // Express session
     // EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET as string,
     // // Storage Provider
-    // PROVIDER: process.env.PROVIDER as "S3" | "LOCAL" | "CLOUDINARY",
+    PROVIDER: process.env.PROVIDER as "s3" | "local" | "cloudinary",
     // SSL: {
     //   SSL_STORE_ID: process.env.SSL_STORE_ID as string,
     //   SSL_STORE_PASS: process.env.SSL_STORE_PASS as string,
