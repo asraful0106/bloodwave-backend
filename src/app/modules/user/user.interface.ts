@@ -24,6 +24,7 @@ export enum CreatedBy {
 }
 
 export interface IUser extends Document {
+  _id: Types.ObjectId;
   f_name: string;
   l_name: string;
   phone: string;
@@ -41,8 +42,8 @@ export interface IUser extends Document {
   user_image: IUserImage;
   donor_profile: IDonorProfile;
   donor_privacy_settings: IDonorPrivacySettings;
-  user_locations: IUserLocation;
-  user_contacts: IUserContact;
+  user_locations: Types.DocumentArray<IUserLocation>;
+  user_contacts: Types.DocumentArray<IUserContact>;
 
   created_at: Date;
   updated_at: Date;
@@ -88,6 +89,7 @@ export interface IDonorPrivacySettings extends Document {
 }
 
 export interface IUserLocation extends Document {
+  _id: Types.ObjectId;
   address_text: string;
   city: string;
   lat: number;
@@ -100,6 +102,7 @@ export interface IUserLocation extends Document {
 export type ContactType = "phone" | "email" | "website" | "social";
 
 export interface IUserContact extends Document {
+  _id: Types.ObjectId;
   type: ContactType;
   title: string; // e.g. "Primary", "Emergency", "Facebook", "LinkedIn"
   value: string; // phone number, URL, etc.

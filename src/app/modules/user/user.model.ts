@@ -139,8 +139,8 @@ const UserSchema = new Schema<IUser>(
     user_image: UserImageSchema,
     donor_profile: DonorProfileSchema,
     donor_privacy_settings: DonorPrivacySettingsSchema,
-    user_locations: [UserLocationSchema],
-    user_contacts: [UserContactSchema],
+    user_locations: { type: [UserLocationSchema], default: [] },
+    user_contacts: { type: [UserContactSchema], default: [] },
   },
   {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
