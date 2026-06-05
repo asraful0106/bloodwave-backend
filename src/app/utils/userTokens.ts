@@ -1,9 +1,10 @@
 import type { JwtPayload } from "jsonwebtoken";
-import { User, type IUser } from "../../files";
 import { envVars } from "../config/envVars";
 import { generateToken, verifyToken } from "./jwt";
 import AppError from "../errorHelper/AppError";
 import { StatusCodes } from "http-status-codes";
+import type { IUser } from "../modules/user/user.interface";
+import { User } from "../modules/user/user.model";
 
 export const createUserTokens = (user: Partial<IUser>) => {
   const jwtPayload = {

@@ -1,7 +1,6 @@
 import type { JwtPayload } from "jsonwebtoken";
 import AppError from "../../errorHelper/AppError";
 import { StatusCodes } from "http-status-codes";
-import { User } from "./user.model";
 import type {
   IUser,
   IDonorProfile,
@@ -12,6 +11,7 @@ import type {
 import { envVars } from "../../config/envVars";
 import bcrypt from "bcryptjs";
 import { deleteLocalFileByUrl } from "../../utils/localUpload";
+import { User } from "./user.model";
 
 // ─────────────────────────────────────────────
 // GET MY ACCOUNT

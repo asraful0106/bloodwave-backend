@@ -71,7 +71,7 @@ const app: Application = express();
 
 configurePassport();
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 // For accessing the cookie
 // app.use(cookieParser());
@@ -85,7 +85,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // Route start with "api/v1"
-app.use("/api/v1/", router);
+app.use("/api/v1", router);
 
 // Middlewares
 app.use(notFound);
