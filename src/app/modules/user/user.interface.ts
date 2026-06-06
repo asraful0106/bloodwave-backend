@@ -33,7 +33,6 @@ export interface IUser extends Document {
   role: UserRole;
   gender: Gender;
   date_of_birth: Date;
-  blood_group_id: string; // e.g. "bg-3" — keep as string or ref a BloodGroup collection
   blood_group_name: string; // e.g. "B+"
   is_verified: boolean;
   status: UserStatus;

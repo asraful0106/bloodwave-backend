@@ -118,7 +118,6 @@ const UserSchema = new Schema<IUser>(
     },
     gender: { type: String, enum: Object.values(Gender) },
     date_of_birth: { type: Date },
-    blood_group_id: { type: String },
     blood_group_name: { type: String },
     is_verified: { type: Boolean, default: false },
     status: {
