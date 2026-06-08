@@ -2,6 +2,7 @@ import { Router } from "express";
 import { authRouter } from "../modules/auth/auth.route";
 import { userRouter } from "../modules/user/user.routes";
 import { bloodReqRouter } from "../modules/bloodReq/bloodReq.routes";
+import { imageRouter } from "../modules/image/image.routes";
 
 const router = Router();
 
@@ -25,6 +26,11 @@ const moduleRoutes: IRouter[] = [
   {
     path: "/blood-req",
     route: bloodReqRouter,
+  },
+  // Image Route
+  {
+    path: "/image",
+    route: imageRouter,
   },
 ];
 
