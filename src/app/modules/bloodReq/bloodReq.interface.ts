@@ -15,7 +15,7 @@ export type BloodRequestStatus =
 export interface IBloodRequest extends Document {
   user_id: Types.ObjectId; // requester
   blood_group_name: string; // e.g. "B+"
-  description: string;
+  description?: string;
   units_required: number;
   lat: number;
   lng: number;

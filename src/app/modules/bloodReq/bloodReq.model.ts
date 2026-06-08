@@ -10,7 +10,7 @@ const BloodRequestSchema = new Schema<IBloodRequest>(
       index: true,
     },
     blood_group_name: { type: String, required: true },
-    description: { type: String, required: true, trim: true },
+    description: { type: String, trim: true },
     units_required: { type: Number, required: true, min: 1 },
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },
