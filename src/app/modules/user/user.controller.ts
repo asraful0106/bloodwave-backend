@@ -5,11 +5,14 @@ import { sendResposne } from "../../utils/sendResponse";
 import { StatusCodes } from "http-status-codes";
 import { envVars } from "../../config/envVars";
 import { saveLocalImage } from "../../utils/localUpload";
+import AppError from "../../errorHelper/AppError";
 
 // ─── GET MY ACCOUNT ───────────────────────────
 const getMyAccount = catchAsync(
   async (req: Request, res: Response, _next: NextFunction) => {
-    const me = await userService.getMyAccount(req.user);
+    const accessToken = req.get("accessToken");
+    if (!accessToken) throw new AppError(400,"access token requird");
+    const me = await userService.getMyAccount(accessToken);
     sendResposne(res, {
       success: true,
       statusCode: StatusCodes.OK,

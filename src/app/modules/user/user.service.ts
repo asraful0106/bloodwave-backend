@@ -12,11 +12,17 @@ import { envVars } from "../../config/envVars";
 import bcrypt from "bcryptjs";
 import { deleteLocalFileByUrl } from "../../utils/localUpload";
 import { User } from "./user.model";
+import jwt from "jsonwebtoken";
 
 // ─────────────────────────────────────────────
 // GET MY ACCOUNT
 // ─────────────────────────────────────────────
-const getMyAccount = async (user: JwtPayload | undefined) => {
+const getMyAccount = async (accessToken: string) => {
+  const user: JwtPayload | undefined = jwt.verify(
+    accessToken,
+    envVars.JWT_SECRET,
+  ) as JwtPayload;
+  
   if (!user) {
     throw new AppError(
       StatusCodes.FORBIDDEN,

@@ -14,7 +14,7 @@ interface IRouter {
 const moduleRoutes: IRouter[] = [
   // For user
   {
-    path: "/user",
+    path: "/users",
     route: userRouter,
   },
   // For Authentication
