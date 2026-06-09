@@ -3,6 +3,7 @@ import { authRouter } from "../modules/auth/auth.route";
 import { userRouter } from "../modules/user/user.routes";
 import { bloodReqRouter } from "../modules/bloodReq/bloodReq.routes";
 import { imageRouter } from "../modules/image/image.routes";
+import { donationRouter } from "../modules/donation/donation.routes";
 
 const router = Router();
 
@@ -26,6 +27,11 @@ const moduleRoutes: IRouter[] = [
   {
     path: "/blood-req",
     route: bloodReqRouter,
+  },
+  // Donation
+  {
+    path: "/donations",
+    route: donationRouter,
   },
   // Image Route
   {
