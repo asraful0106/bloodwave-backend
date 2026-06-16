@@ -105,13 +105,13 @@ export const DonationController = {
   // ── DELETE /donations/:id ─────────────────────────────────────────────────
   async cancel(req: Request, res: Response, _next: NextFunction) {
     try {
-      const requestorUserId = (req as any).user?._id?.toString();
-      if (!requestorUserId)
-        return fail(res, new Error("Unauthenticated."), 401);
+      // const requestorUserId = (req as any).user?._id?.toString();
+      // if (!requestorUserId)
+      //   return fail(res, new Error("Unauthenticated."), 401);
 
       const donation = await DonationService.cancelDonation(
         req.params.id as string,
-        requestorUserId,
+        // requestorUserId,
       );
       return ok(res, donation);
     } catch (err) {

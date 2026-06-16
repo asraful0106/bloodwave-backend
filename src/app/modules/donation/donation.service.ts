@@ -203,7 +203,7 @@ export const DonationService = {
     // Status transitions allowed: PROCESSING → FULFILLED only via update
     // PROCESSING → CANCELLED is handled by cancel() with transaction
     if (dto.status === "FULFILLED") {
-      
+
       update.status = "FULFILLED";
       update.donated_at = dto.donated_at ?? new Date();
     }
@@ -224,7 +224,7 @@ export const DonationService = {
 
   async cancelDonation(
     id: string,
-    requestorUserId: string,
+    // requestorUserId: string,
   ): Promise<IDonation> {
     const session: ClientSession = await mongoose.startSession();
     session.startTransaction();
@@ -239,9 +239,9 @@ export const DonationService = {
       }
 
       // Optional ownership check — remove if admins can cancel freely
-      if (donation.donor_user_id.toString() !== requestorUserId) {
-        throw new Error("You are not authorised to cancel this donation.");
-      }
+      // if (donation.donor_user_id.toString() !== requestorUserId) {
+      //   throw new Error("You are not authorised to cancel this donation.");
+      // }
 
       const wasActive =
         donation.status === "PROCESSING" || donation.status === "FULFILLED";
