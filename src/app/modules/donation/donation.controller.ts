@@ -17,7 +17,7 @@ export const DonationController = {
   // ── POST /donations ───────────────────────────────────────────────────────
   async create(req: Request, res: Response, _next: NextFunction) {
     try {
-      const donor_user_id = (req as any).user?._id?.toString();
+      const donor_user_id = req.get("userId");;
       if (!donor_user_id) return fail(res, new Error("Unauthenticated."), 401);
 
       const { blood_request_id, units, notes } = req.body;

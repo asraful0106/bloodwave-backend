@@ -2,6 +2,7 @@ import mongoose, { type ClientSession, type Types } from "mongoose";
 import { Donation } from "./donation.model";
 import type { IDonation } from "./donation.interface";
 import { BloodRequest } from "../bloodReq/bloodReq.model";
+import { User } from "../user/user.model";
 
 // ─── DTOs ────────────────────────────────────────────────────────────────────
 
@@ -83,11 +84,15 @@ export const DonationService = {
       // NOTE: Requester snapshot — caller should pass requester info or you fetch User here.
       // For now we build a minimal snapshot from blood request user_id.
       // Extend this by injecting requester name/avatar from your User model.
+      const bloodReqUser = await User.findById(bloodRequest.user_id);
+      if(!bloodReqUser) {
+        throw new Error("User not found.");
+      }
       const requesterSnapshot = {
         requester_user_id: bloodRequest.user_id,
-        f_name: "", // populate from User model in your project
-        l_name: "",
-        avatar_url: undefined,
+        f_name: bloodReqUser?.f_name,
+        l_name: bloodReqUser?.l_name,
+        avatar_url: bloodReqUser?.user_image?.link,
       };
 
       // 4. Create the donation document
@@ -198,6 +203,7 @@ export const DonationService = {
     // Status transitions allowed: PROCESSING → FULFILLED only via update
     // PROCESSING → CANCELLED is handled by cancel() with transaction
     if (dto.status === "FULFILLED") {
+      
       update.status = "FULFILLED";
       update.donated_at = dto.donated_at ?? new Date();
     }

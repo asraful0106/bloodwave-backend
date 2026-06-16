@@ -125,6 +125,9 @@ const UserSchema = new Schema<IUser>(
       enum: Object.values(UserStatus),
       default: UserStatus.ACTIVE,
     },
+    last_donation_Date: {
+      type: Date
+    },
     created_by: {
       type: String,
       enum: Object.values(CreatedBy),

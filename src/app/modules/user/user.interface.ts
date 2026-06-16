@@ -36,6 +36,7 @@ export interface IUser extends Document {
   blood_group_name: string; // e.g. "B+"
   is_verified: boolean;
   status: UserStatus;
+  last_donation_Date?: Date;
   created_by: CreatedBy;
   institution_id: Types.ObjectId | null;
   user_image: IUserImage;
