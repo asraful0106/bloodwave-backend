@@ -31,6 +31,18 @@ export const getBloodRequestById = async (
   return request as IBloodRequest | null;
 };
 
+export const getAllBloodReqByUserId = async (
+  id: string,
+): Promise<IBloodRequest[]> => {
+  if (!Types.ObjectId.isValid(id)) return [];
+
+  const requests = await BloodRequest.find({ user_id: id })
+    .populate(USER_POPULATE)
+    .lean();
+
+  return requests as IBloodRequest[];
+};
+
 // ─── Get all (no pagination, with requester info) ────────────────────────────
 
 export const getAllBloodRequests = async (): Promise<IBloodRequest[]> => {

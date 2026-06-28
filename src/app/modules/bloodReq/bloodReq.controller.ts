@@ -69,6 +69,34 @@ export const getAllBloodRequests = async (
     next(error);
   }
 };
+// ─── Get all blood req by user_id ─────────────────────────────────────────────────────────────────
+
+export const getAllBloodRequestsByUserId = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
+  try {
+    const request = await BloodRequestService.getAllBloodReqByUserId(
+      req.params.id as string,
+    );
+
+    if (!request) {
+      res.status(404).json({
+        success: false,
+        message: "Blood request not found.",
+      });
+      return;
+    }
+
+    res.status(200).json({
+      success: true,
+      data: request,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 // ─── Update ───────────────────────────────────────────────────────────────────
 
